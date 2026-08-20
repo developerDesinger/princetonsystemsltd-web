@@ -248,6 +248,43 @@ const StyledSearchInputWrapper = styled.div`
   }
 `;
 
+// Animated Mobile Drawer with slide-in effect
+const StyledMobileDrawer = styled.div<{ $isOpen: boolean; $bgColor: string; $textColor: string }>`
+  max-height: ${props => props.$isOpen ? '500px' : '0'};
+  opacity: ${props => props.$isOpen ? '1' : '0'};
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out;
+  margin-top: ${props => props.$isOpen ? '12px' : '0'};
+  
+  .drawer-content {
+    padding-top: ${props => props.$isOpen ? '12px' : '0'};
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 8px;
+    color: ${props => props.$textColor};
+    
+    .drawer-link {
+      padding: 8px 0;
+      cursor: pointer;
+      transition: padding-left 0.2s ease;
+      
+      &:hover {
+        padding-left: 8px;
+      }
+    }
+    
+    .drawer-cta {
+      padding-top: 12px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+`;
+
 interface NavbarProps {
   onSearchTrigger: () => void;
   onNavigate: (page: Page) => void;
@@ -288,7 +325,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
           </div>
 
           {/* Center: Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 font-jetbrains text-xs md:text-sm font-normal tracking-widest transition-colors duration-500" style={{ color: navbarTextColor }}>
+          <nav className="hidden lg:flex items-center space-x-8 font-jetbrains text-xs md:text-sm font-normal tracking-widest transition-colors duration-500" style={{ color: navbarTextColor }}>
             <span onClick={() => onNavigate('markets')} className={linkClass('markets')}>
               <HyperText text="MARKETS" />
             </span>
@@ -319,13 +356,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
               <AnimatedSearchInput onClick={onSearchTrigger} />
             </div>
 
-            {/* GET THE APP Action Button — hidden on mobile, shown from sm+ */}
-            <div className="hidden sm:block">
+            {/* GET THE APP Action Button — hidden on mobile/tablet, shown from lg+ */}
+            <div className="hidden lg:block">
               <GetTheAppNavButton onClick={() => onNavigate('download')} />
             </div>
 
             {/* Animated Mobile Hamburger Switch */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <HamburgerSwitch
                 isOpen={mobileMenuOpen}
                 onToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -336,20 +373,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
         </div>
 
         {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-3 border-t border-black/10 flex flex-col space-y-3 font-jetbrains text-sm font-medium pb-2" style={{ color: navbarTextColor }}>
-              <span onClick={() => { onNavigate('markets'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">MARKETS</span>
-              <span onClick={() => { onNavigate('how-it-works'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">HOW IT WORKS</span>
-              <span onClick={() => { onNavigate('security'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">SECURITY</span>
-              <span onClick={() => { onNavigate('about'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">ABOUT</span>
-              <span onClick={() => { onNavigate('faq'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">HELP CENTRE / FAQ</span>
-              <span onClick={() => { onNavigate('contact'); setMobileMenuOpen(false); }} className="hover:pl-2 transition-all py-1 cursor-pointer">CONTACT</span>
-              {/* GET THE APP — full-width CTA button at bottom of drawer */}
-              <div className="pt-2 border-t border-black/10">
-                <GetTheAppNavButton onClick={() => { onNavigate('download'); setMobileMenuOpen(false); }} />
-              </div>
+        <StyledMobileDrawer
+          $isOpen={mobileMenuOpen}
+          $bgColor={navbarBg}
+          $textColor={navbarTextColor}
+          className="lg:hidden"
+        >
+          <div className="drawer-content">
+            <span onClick={() => { onNavigate('markets'); setMobileMenuOpen(false); }} className="drawer-link">MARKETS</span>
+            <span onClick={() => { onNavigate('how-it-works'); setMobileMenuOpen(false); }} className="drawer-link">HOW IT WORKS</span>
+            <span onClick={() => { onNavigate('security'); setMobileMenuOpen(false); }} className="drawer-link">SECURITY</span>
+            <span onClick={() => { onNavigate('about'); setMobileMenuOpen(false); }} className="drawer-link">ABOUT</span>
+            <span onClick={() => { onNavigate('faq'); setMobileMenuOpen(false); }} className="drawer-link">HELP CENTRE / FAQ</span>
+            <span onClick={() => { onNavigate('contact'); setMobileMenuOpen(false); }} className="drawer-link">CONTACT</span>
+            {/* GET THE APP — full-width CTA button at bottom of drawer */}
+            <div className="drawer-cta">
+              <GetTheAppNavButton onClick={() => { onNavigate('download'); setMobileMenuOpen(false); }} />
             </div>
-        )}
+          </div>
+        </StyledMobileDrawer>
       </header>
     </div>
   );
