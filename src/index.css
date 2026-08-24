@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #ffc506;
+  background-color: #f9f8f6;
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -21,24 +21,26 @@ body {
   font-family: 'JetBrains Mono', monospace !important;
 }
 
-/* Styled Button: BROWSE EXAMPLES (User Provided Pattern) */
+/* Styled Button: BROWSE EXAMPLES (Secondary Animated Button) */
 .btn-browse {
   font-size: 13px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   letter-spacing: 0.05em;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: none;
   padding: 0.85rem 1.6rem;
-  color: #ffedd3;
+  color: #ffffff;
   text-transform: uppercase;
   position: relative;
-  transition: 0.5s ease;
+  transition: color 0.3s ease;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .btn-browse::before {
@@ -48,13 +50,13 @@ body {
   bottom: 0;
   height: 2px;
   width: 0;
-  background-color: #ffc506;
-  transition: 0.5s ease;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+  z-index: 2;
 }
 
 .btn-browse:hover {
-  color: #1e1e2b;
-  transition-delay: 0.5s;
+  color: #000000;
 }
 
 .btn-browse:hover::before {
@@ -68,15 +70,13 @@ body {
   bottom: 0;
   height: 0;
   width: 100%;
-  background-color: #ffc506;
-  transition: 0.4s ease;
+  background-color: #ffffff;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: -1;
 }
 
 .btn-browse:hover::after {
   height: 100%;
-  transition-delay: 0.4s;
-  color: aliceblue;
 }
 
 /* Styled Button: GET STARTED (User Provided Pattern - btn-31) */
@@ -93,23 +93,23 @@ body {
 .btn-31 {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
-  background-color: #ffc506;
+  background-color: #ffffff;
   background-image: none;
   color: #000;
   cursor: pointer;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.05em;
   line-height: 1.5;
   margin: 0;
-  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0.85rem 1.6rem;
   position: relative;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .btn-31:disabled {
@@ -131,7 +131,7 @@ body {
 
 .btn-31:before {
   --progress: 100%;
-  background: #ffffff;
+  background: #18181b;
   -webkit-clip-path: polygon(
     100% 0,
     var(--progress) var(--progress),
@@ -147,9 +147,8 @@ body {
   content: "";
   inset: 0;
   position: absolute;
-  transition: -webkit-clip-path 0.3s ease;
-  transition: clip-path 0.3s ease;
-  transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
+  transition: clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1), -webkit-clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
 }
 
 .btn-31:hover:before {
@@ -160,6 +159,7 @@ body {
   display: block;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 
 .btn-31 .text {
@@ -167,14 +167,15 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-weight: 800;
-  mix-blend-mode: difference;
   position: relative;
-  color: #000;
+  color: #000000;
+  transition: color 0.35s ease;
 }
 
 .btn-31:hover .text {
-  -webkit-animation: move-up-alternate 0.3s ease forwards;
-  animation: move-up-alternate 0.3s ease forwards;
+  color: #ffffff !important;
+  -webkit-animation: move-up-alternate 0.35s ease forwards;
+  animation: move-up-alternate 0.35s ease forwards;
 }
 
 @-webkit-keyframes move-up-alternate {

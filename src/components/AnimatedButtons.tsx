@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ChevronRight } from 'lucide-react';
 
-// BROWSE EXAMPLES / SECONDARY ANIMATED BUTTON (Fill from bottom)
+// BROWSE EXAMPLES / SECONDARY ANIMATED BUTTON (High-contrast fill sweep)
 interface BrowseButtonProps {
   text?: string;
   accentColor?: string;
@@ -11,12 +11,12 @@ interface BrowseButtonProps {
 
 export const BrowseExamplesButton: React.FC<BrowseButtonProps> = ({
   text = 'BROWSE EXAMPLES',
-  accentColor = '#ffc506',
+  accentColor = '#ffffff',
   onClick,
 }) => {
   return (
     <BrowseWrapper $accent={accentColor}>
-      <button className="btn font-jetbrains" onClick={onClick}>
+      <button className="btn font-general" onClick={onClick}>
         <span>{text}</span>
         <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
       </button>
@@ -29,7 +29,7 @@ const BrowseWrapper = styled.div<{ $accent: string }>`
 
   .btn {
     font-size: 12px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
     letter-spacing: 0.05em;
     background: transparent;
@@ -39,12 +39,13 @@ const BrowseWrapper = styled.div<{ $accent: string }>`
     color: #ffffff;
     text-transform: uppercase;
     position: relative;
-    transition: 0.5s ease;
+    transition: color 0.3s ease;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
     z-index: 1;
+    overflow: hidden;
   }
 
   .btn::before {
@@ -55,16 +56,8 @@ const BrowseWrapper = styled.div<{ $accent: string }>`
     height: 2px;
     width: 0;
     background-color: ${props => props.$accent};
-    transition: 0.5s ease;
-  }
-
-  .btn:hover {
-    color: #000000;
-    transition-delay: 0.5s;
-  }
-
-  .btn:hover::before {
-    width: 100%;
+    transition: width 0.3s ease;
+    z-index: 2;
   }
 
   .btn::after {
@@ -75,17 +68,24 @@ const BrowseWrapper = styled.div<{ $accent: string }>`
     height: 0;
     width: 100%;
     background-color: ${props => props.$accent};
-    transition: 0.4s ease;
+    transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: -1;
+  }
+
+  .btn:hover {
+    color: #000000;
+  }
+
+  .btn:hover::before {
+    width: 100%;
   }
 
   .btn:hover::after {
     height: 100%;
-    transition-delay: 0.4s;
   }
 `;
 
-// GET STARTED / PRIMARY ANIMATED BUTTON (btn-31 with clip-path sweep & text move-up animation)
+// GET STARTED / PRIMARY ANIMATED BUTTON (btn-31 with high-contrast clip-path polygon sweep)
 interface GetStartedButtonProps {
   text?: string;
   bg?: string;
@@ -95,13 +95,13 @@ interface GetStartedButtonProps {
 
 export const GetStartedButton: React.FC<GetStartedButtonProps> = ({
   text = 'GET STARTED',
-  bg = '#ffc506',
+  bg = '#ffffff',
   textColor = '#000000',
   onClick,
 }) => {
   return (
     <GetStartedWrapper $bg={bg} $textColor={textColor}>
-      <button className="btn-31 font-jetbrains" onClick={onClick}>
+      <button className="btn-31 font-general" onClick={onClick}>
         <span className="text-container">
           <span className="text">
             <span>{text}</span>
@@ -133,7 +133,7 @@ const GetStartedWrapper = styled.div<{ $bg: string; $textColor: string }>`
     background-image: none;
     color: ${props => props.$textColor};
     cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.05em;
@@ -143,6 +143,7 @@ const GetStartedWrapper = styled.div<{ $bg: string; $textColor: string }>`
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
+    transition: background-color 0.3s ease;
   }
 
   .btn-31:disabled {
@@ -164,7 +165,8 @@ const GetStartedWrapper = styled.div<{ $bg: string; $textColor: string }>`
 
   .btn-31:before {
     --progress: 100%;
-    background: #ffffff;
+    /* High-contrast sweep background: if base is white, sweep with black/zinc */
+    background: ${props => (props.$bg === '#ffffff' || props.$bg === '#fff' ? '#18181b' : '#ffffff')};
     -webkit-clip-path: polygon(
       100% 0,
       var(--progress) var(--progress),
@@ -180,7 +182,7 @@ const GetStartedWrapper = styled.div<{ $bg: string; $textColor: string }>`
     content: "";
     inset: 0;
     position: absolute;
-    transition: -webkit-clip-path 0.3s ease, clip-path 0.3s ease;
+    transition: -webkit-clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1), clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 0;
   }
 
@@ -202,12 +204,14 @@ const GetStartedWrapper = styled.div<{ $bg: string; $textColor: string }>`
     font-weight: 800;
     position: relative;
     color: ${props => props.$textColor};
+    transition: color 0.35s ease;
   }
 
   .btn-31:hover .text {
-    color: #000000 !important;
-    -webkit-animation: move-up-alternate 0.3s ease forwards;
-    animation: move-up-alternate 0.3s ease forwards;
+    /* Contrast text color when polygon sweeps */
+    color: ${props => (props.$bg === '#ffffff' || props.$bg === '#fff' ? '#ffffff' : '#000000')} !important;
+    -webkit-animation: move-up-alternate 0.35s ease forwards;
+    animation: move-up-alternate 0.35s ease forwards;
   }
 
   @-webkit-keyframes move-up-alternate {

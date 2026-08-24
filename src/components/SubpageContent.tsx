@@ -76,7 +76,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
           {/* Editorial numbered header */}
           <div className="grid grid-cols-[56px_1fr] md:grid-cols-[80px_160px_1fr] gap-x-8 gap-y-4 pb-12 mb-4 border-b border-zinc-800">
-            <span className="text-blue-500 font-mono font-bold text-xs mt-1">01</span>
+            <span className="text-zinc-400 font-mono font-bold text-xs mt-1">01</span>
             <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest hidden md:block mt-1">MARKETS</span>
             <div>
               <h2 className="font-general font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
@@ -87,15 +87,15 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
           </div>
 
           <div className="flex items-center justify-end mb-8 text-[11px] tracking-widest text-zinc-500 uppercase">
-            <span className="text-amber-400/90 font-mono text-[10px]">NOTICE: 15-MIN DELAYED SAMPLE DATA</span>
+            <span className="text-zinc-400 font-mono text-[10px]">NOTICE: 15-MIN DELAYED SAMPLE DATA</span>
           </div>
 
           {/* GSE Indices Summary */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="border border-blue-900/40 bg-[#0c1220] p-6">
-              <div className="text-[10px] text-blue-400 font-mono uppercase mb-2">GSE COMPOSITE INDEX (GSE-CI)</div>
+            <div className="border border-zinc-800 bg-[#0c0c0e] p-6">
+              <div className="text-[10px] text-zinc-400 font-mono uppercase mb-2">GSE COMPOSITE INDEX (GSE-CI)</div>
               <div className="text-3xl font-bold font-general text-white">2,847.32</div>
-              <div className="text-xs text-emerald-400 font-mono mt-2 flex items-center gap-1">
+              <div className="text-xs text-zinc-300 font-mono mt-2 flex items-center gap-1">
                 <span>▲ +34.82 (+1.24%)</span>
                 <span className="text-zinc-500 text-[10px] ml-2">YTD: +14.8%</span>
               </div>
@@ -103,7 +103,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
             <div className="border border-zinc-900 bg-[#0c0c0e] p-6">
               <div className="text-[10px] text-zinc-500 font-mono uppercase mb-2">GSE FINANCIAL STOCKS (GSE-FSI)</div>
               <div className="text-3xl font-bold font-general text-white">1,984.10</div>
-              <div className="text-xs text-emerald-400 font-mono mt-2 flex items-center gap-1">
+              <div className="text-xs text-zinc-300 font-mono mt-2 flex items-center gap-1">
                 <span>▲ +12.40 (+0.63%)</span>
                 <span className="text-zinc-500 text-[10px] ml-2">YTD: +8.2%</span>
               </div>
@@ -123,13 +123,13 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
               <div>
                 <div className="flex items-center gap-3">
                   <h3 className="font-general font-bold text-2xl text-white">Scancom PLC (MTN Ghana)</h3>
-                  <span className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/30 text-[10px] px-2 py-0.5 font-mono font-bold">MTNGH</span>
+                  <span className="bg-zinc-800 text-white border border-zinc-700 text-[10px] px-2 py-0.5 font-mono font-bold">MTNGH</span>
                 </div>
                 <p className="text-zinc-400 text-xs mt-1">Telecommunications // GSE Primary Listing</p>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold font-mono text-white">GH₵ 1.38</div>
-                <div className="text-xs text-red-400 font-mono">-0.22% (-GH₵ 0.003)</div>
+                <div className="text-xs text-zinc-400 font-mono">-0.22% (-GH₵ 0.003)</div>
               </div>
             </div>
 
@@ -182,11 +182,11 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
                   { ticker: 'GOIL', name: 'Ghana Oil Company PLC', price: '1.85', chg: '0.00%', vol: '65,000', up: true },
                   { ticker: 'SOGEGH', name: 'Societe Generale Ghana PLC', price: '1.15', chg: '+0.02%', vol: '18,400', up: true },
                 ].map(r => (
-                  <tr key={r.ticker} className="border-b border-zinc-900/80 hover:bg-blue-950/20 transition-colors cursor-pointer group">
-                    <td className="py-4 px-6 font-bold text-blue-400 font-mono">{r.ticker}</td>
+                  <tr key={r.ticker} className="border-b border-zinc-900/80 hover:bg-zinc-900/40 transition-colors cursor-pointer group">
+                    <td className="py-4 px-6 font-bold text-white font-mono">{r.ticker}</td>
                     <td className="py-4 pr-6 text-zinc-300 group-hover:text-white transition-colors">{r.name}</td>
                     <td className="py-4 pr-6 text-right font-bold text-white font-mono">{r.price}</td>
-                    <td className={`py-4 pr-6 text-right font-bold font-mono ${r.up ? 'text-blue-400' : 'text-zinc-500'}`}>{r.chg}</td>
+                    <td className={`py-4 pr-6 text-right font-bold font-mono ${r.up ? 'text-white' : 'text-zinc-400'}`}>{r.chg}</td>
                     <td className="py-4 px-6 text-right text-zinc-500 font-mono">{r.vol}</td>
                   </tr>
                 ))}
@@ -208,7 +208,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
               </button>
               <button
                 onClick={() => onNavigate('download')}
-                className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-bold px-5 py-3 transition-colors uppercase"
+                className="bg-white hover:bg-zinc-200 text-black text-xs font-mono font-bold px-5 py-3 transition-colors uppercase"
               >
                 GET THE APP
               </button>
@@ -268,7 +268,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
           {/* Editorial numbered header */}
           <div className="grid grid-cols-[56px_1fr] md:grid-cols-[80px_180px_1fr] gap-x-8 gap-y-4 pb-12 mb-12 border-b border-zinc-800">
-            <span className="text-emerald-500 font-mono font-bold text-xs mt-1">02</span>
+            <span className="text-zinc-400 font-mono font-bold text-xs mt-1">02</span>
             <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest hidden md:block mt-1">HOW IT WORKS</span>
             <div>
               <h2 className="font-general font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
@@ -282,7 +282,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
           <div className="space-y-0 mb-16">
             {steps.map((s, i) => (
               <div key={s.num} className={`grid grid-cols-[56px_1fr] md:grid-cols-[80px_180px_1fr] gap-x-8 gap-y-2 py-8 ${i < steps.length - 1 ? 'border-b border-zinc-800' : ''}`}>
-                <span className="text-emerald-500 font-mono font-bold text-xs mt-0.5">{s.num}</span>
+                <span className="text-zinc-400 font-mono font-bold text-xs mt-0.5">{s.num}</span>
                 <h3 className="font-general font-semibold text-lg text-white hidden md:block">{s.title}</h3>
                 <div>
                   <h3 className="font-general font-semibold text-lg text-white mb-2 md:hidden">{s.title}</h3>
@@ -294,15 +294,15 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
           </div>
 
           {/* Bottom Conversion CTA */}
-          <div className="border border-emerald-900/40 bg-[#0c1a11] p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="border border-zinc-800 bg-[#0c0c0e] p-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest mb-1">READY TO BEGIN?</div>
+              <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1">READY TO BEGIN?</div>
               <h3 className="font-general font-semibold text-2xl text-white">Open your account in under 3 minutes.</h3>
               <p className="text-zinc-400 text-xs mt-1">Have your Ghana Card ready for instant digital identity verification.</p>
             </div>
             <button
               onClick={() => onNavigate('download')}
-              className="bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-mono font-bold px-8 py-3.5 uppercase tracking-wider transition-colors shrink-0"
+              className="bg-white hover:bg-zinc-200 text-black text-xs font-mono font-bold px-8 py-3.5 uppercase tracking-wider transition-colors shrink-0"
             >
               GET THE APP NOW
             </button>
@@ -322,7 +322,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
           {/* Editorial numbered header */}
           <div className="grid grid-cols-[56px_1fr] md:grid-cols-[80px_180px_1fr] gap-x-8 gap-y-4 pb-12 mb-12 border-b border-zinc-800">
-            <span className="text-purple-500 font-mono font-bold text-xs mt-1">03</span>
+            <span className="text-zinc-400 font-mono font-bold text-xs mt-1">03</span>
             <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest hidden md:block mt-1">SECURITY</span>
             <div>
               <h2 className="font-general font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
@@ -334,67 +334,67 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
           {/* 4-Layer Expanded Model */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="border border-purple-900/40 bg-[#0c0c0e] p-8">
+            <div className="border border-zinc-800 bg-[#0c0c0e] p-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-mono text-purple-400 font-bold">LAYER 01 // TRANSPORT</span>
-                <Lock className="w-4 h-4 text-purple-400" />
+                <span className="text-[10px] font-mono text-zinc-400 font-bold">LAYER 01 // TRANSPORT</span>
+                <Lock className="w-4 h-4 text-white" />
               </div>
               <h3 className="font-general font-semibold text-xl text-white mb-3">Transport Security</h3>
               <p className="text-zinc-400 text-xs leading-relaxed mb-4">
                 All client interactions, API payloads, and market data streams pass exclusively through TLS 1.3 encrypted tunnels with automated certificate rotation.
               </p>
               <ul className="text-xs text-zinc-400 space-y-2 font-mono">
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> AES-256 GCM Payload Encryption</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> HSTS Enforced on all Subdomains</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> DDoS Shielding via AWS CloudFront</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> AES-256 GCM Payload Encryption</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> HSTS Enforced on all Subdomains</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> DDoS Shielding via AWS CloudFront</li>
               </ul>
             </div>
 
-            <div className="border border-purple-900/40 bg-[#0c0c0e] p-8">
+            <div className="border border-zinc-800 bg-[#0c0c0e] p-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-mono text-purple-400 font-bold">LAYER 02 // APPLICATION</span>
-                <Shield className="w-4 h-4 text-purple-400" />
+                <span className="text-[10px] font-mono text-zinc-400 font-bold">LAYER 02 // APPLICATION</span>
+                <Shield className="w-4 h-4 text-white" />
               </div>
               <h3 className="font-general font-semibold text-xl text-white mb-3">Application Defense</h3>
               <p className="text-zinc-400 text-xs leading-relaxed mb-4">
                 Multi-factor authentication (2FA), biometric challenge checks on withdrawals, and rotating cryptographic session tokens prevent unauthorized access.
               </p>
               <ul className="text-xs text-zinc-400 space-y-2 font-mono">
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Biometric Face ID & Fingerprint auth</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Short-lived JWT with Hardware Binding</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Automated Suspicious Device Lockouts</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Biometric Face ID & Fingerprint auth</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Short-lived JWT with Hardware Binding</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Automated Suspicious Device Lockouts</li>
               </ul>
             </div>
 
-            <div className="border border-purple-900/40 bg-[#0c0c0e] p-8">
+            <div className="border border-zinc-800 bg-[#0c0c0e] p-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-mono text-purple-400 font-bold">LAYER 03 // DATA</span>
-                <Database className="w-4 h-4 text-purple-400" />
+                <span className="text-[10px] font-mono text-zinc-400 font-bold">LAYER 03 // DATA</span>
+                <Database className="w-4 h-4 text-white" />
               </div>
               <h3 className="font-general font-semibold text-xl text-white mb-3">Data Governance & Custody</h3>
               <p className="text-zinc-400 text-xs leading-relaxed mb-4">
                 Client funds and shares are strictly segregated from Princeton Systems Ltd operational accounts per Bank of Ghana and SEC statutory directives.
               </p>
               <ul className="text-xs text-zinc-400 space-y-2 font-mono">
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Statutory Account Segregation</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Encrypted Database at Rest (AWS KMS)</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Zero Third-Party Advertising Data Sharing</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Statutory Account Segregation</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Encrypted Database at Rest (AWS KMS)</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Zero Third-Party Advertising Data Sharing</li>
               </ul>
             </div>
 
-            <div className="border border-purple-900/40 bg-[#0c0c0e] p-8">
+            <div className="border border-zinc-800 bg-[#0c0c0e] p-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-mono text-purple-400 font-bold">LAYER 04 // COMPLIANCE</span>
-                <Landmark className="w-4 h-4 text-purple-400" />
+                <span className="text-[10px] font-mono text-zinc-400 font-bold">LAYER 04 // COMPLIANCE</span>
+                <Landmark className="w-4 h-4 text-white" />
               </div>
               <h3 className="font-general font-semibold text-xl text-white mb-3">Regulatory Compliance</h3>
               <p className="text-zinc-400 text-xs leading-relaxed mb-4">
                 Aligned with the Securities Industry Act, 2016 (Act 929) and anti-money laundering (AML) guidelines established by the Financial Intelligence Centre.
               </p>
               <ul className="text-xs text-zinc-400 space-y-2 font-mono">
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Securities Industry Act 2016 (Act 929)</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> AML / Counter-Terrorist Financing Rules</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✓</span> Annual External Financial & Security Audits</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Securities Industry Act 2016 (Act 929)</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> AML / Counter-Terrorist Financing Rules</li>
+                <li className="flex items-center gap-2"><span className="text-white">✓</span> Annual External Financial & Security Audits</li>
               </ul>
             </div>
           </div>
@@ -407,7 +407,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
             </div>
             <button
               onClick={() => onNavigate('about')}
-              className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-mono font-bold px-6 py-3.5 uppercase transition-colors shrink-0"
+              className="bg-white hover:bg-zinc-200 text-black text-xs font-mono font-bold px-6 py-3.5 uppercase transition-colors shrink-0"
             >
               ABOUT / COMPANY →
             </button>
@@ -497,7 +497,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
                 <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">05 / GET THE APP</span>
               </div>
               <div className="mt-8">
-                <div className="w-10 h-10 bg-[#c97b4b] flex items-center justify-center">
+                <div className="w-10 h-10 bg-zinc-800 flex items-center justify-center">
                   <Smartphone className="w-5 h-5 text-white" />
                 </div>
               </div>
@@ -518,7 +518,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
             {/* Eyebrow + headline */}
             <div className="mb-8">
-              <div className="text-[10px] font-mono text-[#c97b4b] uppercase tracking-widest font-bold mb-3">GHANA STOCK EXCHANGE // MOBILE TRADING</div>
+              <div className="text-[10px] font-mono text-white uppercase tracking-widest font-bold mb-3">GHANA STOCK EXCHANGE // MOBILE TRADING</div>
               <h1 className="font-general font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight mb-4">
                 Trade Ghana's best<br />companies from your phone.
               </h1>
@@ -544,7 +544,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
             {/* Waitlist form */}
             <div className="mb-3">
-              <div className="text-[10px] font-mono text-[#c97b4b] uppercase tracking-widest font-bold mb-3">REGISTER FOR EARLY ACCESS</div>
+              <div className="text-[10px] font-mono text-white uppercase tracking-widest font-bold mb-3">REGISTER FOR EARLY ACCESS</div>
               <form
                 onSubmit={(e) => { e.preventDefault(); setWaitlistSuccess(true); }}
                 className="flex flex-col sm:flex-row border border-zinc-700"
@@ -562,7 +562,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
                 </div>
                 <button
                   type="submit"
-                  className="bg-[#c97b4b] hover:bg-[#b06a3f] text-white text-xs font-mono font-bold px-6 py-3 uppercase tracking-widest transition-colors shrink-0"
+                  className="bg-white hover:bg-zinc-200 text-black text-xs font-mono font-bold px-6 py-3 uppercase tracking-widest transition-colors shrink-0"
                 >
                   {waitlistSuccess ? 'REGISTERED ✓' : 'JOIN WAITLIST ›'}
                 </button>
@@ -642,11 +642,11 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
 
           {page === 'risk-disclosure' && (
             <div className="space-y-8 text-zinc-600 text-xs sm:text-sm leading-relaxed">
-              <div className="border border-red-200 bg-red-50 p-6 flex items-start gap-4">
-                <AlertTriangle className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
+              <div className="border border-black/10 bg-zinc-50 p-6 flex items-start gap-4">
+                <AlertTriangle className="w-6 h-6 text-black shrink-0 mt-0.5" />
                 <div>
                   <h2 className="font-general font-bold text-xl text-black mb-2">Statutory Investment Risk Disclosure</h2>
-                  <p className="text-red-600 text-xs">Required under Securities Industry Act, 2016 (Act 929) and SEC Ghana guidelines.</p>
+                  <p className="text-zinc-600 text-xs">Required under Securities Industry Act, 2016 (Act 929) and SEC Ghana guidelines.</p>
                 </div>
               </div>
               <div className="border-t border-black/10 pt-6 space-y-4">
@@ -873,8 +873,8 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
     const devTools = [
       {
         icon: '⬡',
-        iconBg: '#1a1a2e',
-        iconColor: '#c97b4b',
+        iconBg: '#18181b',
+        iconColor: '#ffffff',
         label: 'FIX PROTOCOL',
         title: 'FIX 4.4 / 5.0 Order Routing',
         desc: 'Direct Financial Information eXchange protocol connectivity to the GSE Automated Trading System.',
@@ -882,8 +882,8 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
       },
       {
         icon: '◈',
-        iconBg: '#1a2e1a',
-        iconColor: '#4ade80',
+        iconBg: '#27272a',
+        iconColor: '#ffffff',
         label: 'STREAMING API',
         title: 'REST & WebSocket Market Data',
         desc: 'Real-time tick-level market depth, trade prints, and order book streaming via persistent WebSocket connections.',
@@ -891,8 +891,8 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
       },
       {
         icon: '◎',
-        iconBg: '#2e1a2e',
-        iconColor: '#a78bfa',
+        iconBg: '#18181b',
+        iconColor: '#a1a1aa',
         label: 'TESTING',
         title: 'GSE Sandbox Environment',
         desc: 'Simulated GSE matching engine with synthetic order flow for automated strategy backtesting and integration testing.',
@@ -900,8 +900,8 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
       },
       {
         icon: '⊞',
-        iconBg: '#1a2430',
-        iconColor: '#60a5fa',
+        iconBg: '#27272a',
+        iconColor: '#a1a1aa',
         label: 'MANAGEMENT',
         title: 'Portfolio & Account API',
         desc: 'Programmatic access to positions, P&L, dividend records, transaction history, and custodian account management.',
@@ -964,19 +964,19 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
           <div className="mt-10 md:mt-16 border border-zinc-800 bg-[#0c0c0e] p-4 sm:p-6 font-mono text-xs overflow-x-auto">
             <div className="flex items-center justify-between text-[10px] text-zinc-500 border-b border-zinc-800 pb-3 mb-5">
               <span>SAMPLE // WEBSOCKET TICK STREAM</span>
-              <span className="text-[#c97b4b] font-bold">SANDBOX BETA</span>
+              <span className="text-white font-bold">SANDBOX BETA</span>
             </div>
             <div className="text-zinc-400 text-[11px] leading-relaxed min-w-[280px]">
               <p className="text-zinc-600">// Connect to live GSE order stream</p>
-              <p><span className="text-[#c97b4b]">const</span> stream = <span className="text-yellow-400">new</span> GSEMarketStream(&#123;</p>
-              <p className="pl-4">apiKey: <span className="text-emerald-400">"psl_live_key_..."</span>,</p>
-              <p className="pl-4">symbols: [<span className="text-emerald-400">"GCB"</span>, <span className="text-emerald-400">"MTNGH"</span>]</p>
+              <p><span className="text-white">const</span> stream = <span className="text-zinc-300">new</span> GSEMarketStream(&#123;</p>
+              <p className="pl-4">apiKey: <span className="text-zinc-300">"psl_live_key_..."</span>,</p>
+              <p className="pl-4">symbols: [<span className="text-zinc-300">"GCB"</span>, <span className="text-zinc-300">"MTNGH"</span>]</p>
               <p>&#125;);</p>
-              <p>stream.on(<span className="text-emerald-400">'tick'</span>, data =&gt; &#123; <span className="text-zinc-600">/* handle */</span> &#125;);</p>
+              <p>stream.on(<span className="text-zinc-300">'tick'</span>, data =&gt; &#123; <span className="text-zinc-600">/* handle */</span> &#125;);</p>
             </div>
             <div className="mt-4 pt-3 border-t border-zinc-800 text-[9px] text-zinc-600 uppercase tracking-widest">
               REQUEST API KEY →{' '}
-              <span onClick={() => onNavigate('contact')} className="text-[#c97b4b] cursor-pointer underline">CONTACT INSTITUTIONAL DESK</span>
+              <span onClick={() => onNavigate('contact')} className="text-white cursor-pointer underline">CONTACT INSTITUTIONAL DESK</span>
             </div>
           </div>
 
@@ -989,7 +989,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
   if (page === 'blog') {
     const changelog = [
       {
-        tags: [{ label: 'APP', color: '#c97b4b' }, { label: 'MINOR', color: '#3f3f46' }],
+        tags: [{ label: 'APP', color: '#27272a' }, { label: 'MINOR', color: '#3f3f46' }],
         version: '2.4.1',
         date: '19 AUG 2026',
         type: 'IMPROVED',
@@ -999,7 +999,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         ],
       },
       {
-        tags: [{ label: 'PLATFORM', color: '#4ade80' }, { label: 'MAJOR', color: '#3f3f46' }],
+        tags: [{ label: 'PLATFORM', color: '#52525b' }, { label: 'MAJOR', color: '#3f3f46' }],
         version: '2.4.0',
         date: '10 AUG 2026',
         type: 'ADDED',
@@ -1010,7 +1010,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         ],
       },
       {
-        tags: [{ label: 'API', color: '#60a5fa' }, { label: 'PATCH', color: '#3f3f46' }],
+        tags: [{ label: 'API', color: '#71717a' }, { label: 'PATCH', color: '#3f3f46' }],
         version: '2.3.5',
         date: '02 AUG 2026',
         type: 'FIXED',
@@ -1029,7 +1029,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         date: 'AUGUST 19, 2026',
         author: 'PRINCETON RESEARCH',
         read: '5 min read',
-        accentColor: '#c97b4b',
+        accentColor: '#ffffff',
       },
       {
         tag: 'MACRO INSIGHTS',
@@ -1038,7 +1038,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         date: 'AUGUST 12, 2026',
         author: 'PRINCETON RESEARCH',
         read: '8 min read',
-        accentColor: '#4ade80',
+        accentColor: '#a1a1aa',
       },
       {
         tag: 'PLATFORM UPDATES',
@@ -1047,7 +1047,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         date: 'JULY 28, 2026',
         author: 'ENGINEERING TEAM',
         read: '6 min read',
-        accentColor: '#a78bfa',
+        accentColor: '#71717a',
       },
     ];
 
@@ -1081,10 +1081,10 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
                     <div className="font-general font-bold text-3xl sm:text-4xl text-white mb-1 tabular-nums">{entry.version}</div>
                     <div
                       className="h-0.5 w-14 mb-3"
-                      style={{ background: 'repeating-linear-gradient(90deg, #c97b4b 0, #c97b4b 4px, transparent 4px, transparent 8px)' }}
+                      style={{ background: 'repeating-linear-gradient(90deg, #71717a 0, #71717a 4px, transparent 4px, transparent 8px)' }}
                     />
                     <div className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mb-1">{entry.date}</div>
-                    <div className="text-[10px] font-mono text-[#c97b4b] uppercase font-bold mb-3">{entry.type}</div>
+                    <div className="text-[10px] font-mono text-white uppercase font-bold mb-3">{entry.type}</div>
                     <ul className="space-y-1.5">
                       {entry.items.map((item, j) => (
                         <li key={j} className="text-xs text-zinc-400 flex items-start gap-2">
@@ -1220,7 +1220,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
         <div className="max-w-[1200px] mx-auto px-4 md:px-10">
           <PageBackButton onClick={() => onNavigate('home')} isLight={true} />
           <div className="flex items-center gap-4 mb-12 text-[11px] tracking-widest text-zinc-400 uppercase">
-            <span className="text-[#c49a00] font-bold">RETAIL TIER // INDIVIDUAL TRADING</span>
+            <span className="text-black font-bold">RETAIL TIER // INDIVIDUAL TRADING</span>
             <span>ZERO MINIMUM BALANCE</span>
           </div>
 
@@ -1238,7 +1238,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => onNavigate('download')}
-                  className="bg-[#ffc506] hover:bg-yellow-400 text-black text-xs font-mono font-bold px-6 py-3.5 uppercase transition-colors"
+                  className="bg-black hover:bg-zinc-800 text-white text-xs font-mono font-bold px-6 py-3.5 uppercase transition-colors"
                 >
                   DOWNLOAD THE APP
                 </button>
@@ -1257,7 +1257,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
               </div>
               <div className="flex justify-between py-2 border-b border-black/10">
                 <span className="text-zinc-500">MINIMUM DEPOSIT:</span>
-                <span className="text-[#c49a00] font-bold">GH₵ 0.00</span>
+                <span className="text-black font-bold">GH₵ 0.00</span>
               </div>
               <div className="flex justify-between py-2 border-b border-black/10">
                 <span className="text-zinc-500">KYC VERIFICATION:</span>
@@ -1273,7 +1273,7 @@ export const SubpageContent: React.FC<SubpageContentProps> = ({ page, onNavigate
               </div>
               <div className="flex justify-between py-2">
                 <span className="text-zinc-500">DIVIDEND PAYOUTS:</span>
-                <span className="text-[#c49a00] font-bold">Automated Wallet Credit</span>
+                <span className="text-black font-bold">Automated Wallet Credit</span>
               </div>
             </div>
           </div>

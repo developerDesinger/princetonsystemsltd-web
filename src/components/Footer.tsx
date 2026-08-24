@@ -139,15 +139,15 @@ const StyledBubbleWrapper = styled.div<{ $accent: string }>`
   }
 
   .button-bg-layer.-purple {
-    background-color: rgba(163, 116, 255);
+    background-color: rgba(180, 180, 180);
   }
 
   .button-bg-layer.-turquoise {
-    background-color: rgba(23, 241, 209);
+    background-color: rgba(210, 210, 210);
   }
 
   .button-bg-layer.-yellow {
-    background-color: ${props => props.$accent || 'rgba(255, 208, 116)'};
+    background-color: ${props => props.$accent || '#ffffff'};
   }
 
   .button:hover .button-inner-static {
@@ -329,7 +329,7 @@ const StyledSubscribeWrapper = styled.div`
   }
 `;
 
-export const Footer: React.FC<FooterProps> = ({ accentColor = '#3b82f6', onNavigate = () => {} }) => {
+export const Footer: React.FC<FooterProps> = ({ accentColor = '#000000', onNavigate = () => {} }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -487,7 +487,7 @@ export const Footer: React.FC<FooterProps> = ({ accentColor = '#3b82f6', onNavig
             <ul className="flex flex-col gap-2.5 text-xs text-black/70">
               <li onClick={() => onNavigate('terms')} className="hover:text-black cursor-pointer">Terms of Service</li>
               <li onClick={() => onNavigate('privacy')} className="hover:text-black cursor-pointer">Privacy Policy</li>
-              <li onClick={() => onNavigate('risk-disclosure')} className="hover:text-black cursor-pointer text-red-700 font-semibold">Risk Disclosure</li>
+              <li onClick={() => onNavigate('risk-disclosure')} className="hover:text-black cursor-pointer font-semibold text-black">Risk Disclosure</li>
               <li onClick={() => onNavigate('security')} className="hover:text-black cursor-pointer">Compliance Alignment</li>
             </ul>
           </div>
@@ -498,7 +498,7 @@ export const Footer: React.FC<FooterProps> = ({ accentColor = '#3b82f6', onNavig
       {/* ── Bottom Bar ── */}
       <div className="max-w-[1536px] mx-auto px-4 md:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-[11px] text-black/50 text-center sm:text-left">
-          © 2026 <span onClick={() => onNavigate('home')} className="font-semibold cursor-pointer hover:underline" style={{ color: accentColor }}>Princeton Systems Ltd</span>. All rights reserved. Registered in Ghana.
+          © 2026 <span onClick={() => onNavigate('home')} className="font-semibold cursor-pointer hover:underline text-black">Princeton Systems Ltd</span>. All rights reserved. Registered in Ghana.
         </p>
 
         <div className="flex items-center gap-3">
@@ -508,11 +508,10 @@ export const Footer: React.FC<FooterProps> = ({ accentColor = '#3b82f6', onNavig
           </div>
           <div
             onClick={() => onNavigate('security')}
-            className="flex items-center text-white text-[10px] font-bold tracking-wider uppercase px-3 py-2 gap-2 cursor-pointer transition-colors"
-            style={{ backgroundColor: accentColor }}
+            className="flex items-center bg-black text-white text-[10px] font-bold tracking-wider uppercase px-3 py-2 gap-2 cursor-pointer transition-colors"
           >
             <span className="font-mono text-[10px]">SEC STATUS</span>
-            <span className="bg-white px-1.5 py-0.5 text-[9px] font-extrabold" style={{ color: accentColor }}>COMPLIANT</span>
+            <span className="bg-white text-black px-1.5 py-0.5 text-[9px] font-extrabold">COMPLIANT</span>
           </div>
         </div>
       </div>

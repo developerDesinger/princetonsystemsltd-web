@@ -341,7 +341,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
             <span onClick={() => onNavigate('download')} className={`${linkClass('download')} flex items-center gap-1.5`}>
               <HyperText text="APP" />
               <span
-                className="text-[9px] bg-[#ffc506] text-black px-1.5 py-[1px] font-mono font-bold"
+                className="text-[9px] bg-black text-white px-1.5 py-[1px] font-mono font-bold"
               >
                 NEW
               </span>

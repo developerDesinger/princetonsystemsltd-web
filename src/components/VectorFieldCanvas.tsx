@@ -44,13 +44,13 @@ export const VectorFieldCanvas: React.FC = () => {
       mouseX += (targetMouseX - mouseX) * 0.05;
       mouseY += (targetMouseY - mouseY) * 0.05;
 
-      // Draw Vibrant Rainbow Mesh Gradient Background (Matching user image)
+      // Draw Sleek Grayscale Mesh Gradient Background
       const bgGrad = ctx.createLinearGradient(0, 0, width, height);
-      bgGrad.addColorStop(0, '#ffc506');      // Top-left Yellow
-      bgGrad.addColorStop(0.2, '#10b981');   // Green
-      bgGrad.addColorStop(0.45, '#3b82f6');   // Blue
-      bgGrad.addColorStop(0.75, '#a855f7');  // Purple
-      bgGrad.addColorStop(1, '#ffc506');     // Yellow accent
+      bgGrad.addColorStop(0, '#18181b');      // Dark Zinc
+      bgGrad.addColorStop(0.2, '#09090b');   // Almost Black
+      bgGrad.addColorStop(0.45, '#141417');  // Dark Gray
+      bgGrad.addColorStop(0.75, '#27272a');  // Zinc Accent
+      bgGrad.addColorStop(1, '#09090b');     // Dark Base
 
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);

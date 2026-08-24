@@ -70,27 +70,25 @@ const NAVBAR_TEXT: Record<Page, string> = {
   careers:          '#0d0d0d',
 };
 
-// Two-tone professional accent system:
-//   #ffc506  — brand gold  (product, retail, CTA pages)
-//   #0f2d52  — deep navy   (institutional, legal, compliance pages)
+// Monochrome professional accent system (Black, White, Gray) matching About page & Footer
 const ACCENT: Record<Page, string> = {
-  home:             '#ffc506', // Brand gold — primary identity
-  markets:          '#ffc506', // Brand gold — live data pages
-  'how-it-works':   '#ffc506', // Brand gold — onboarding
-  security:         '#0f2d52', // Deep navy — trust/compliance
-  about:            '#0f2d52', // Deep navy — corporate
-  download:         '#ffc506', // Brand gold — conversion
-  individual:       '#ffc506', // Brand gold — retail
-  corporate:        '#0f2d52', // Deep navy — corporate
-  institutional:    '#0f2d52', // Deep navy — institutional
-  terms:            '#0f2d52', // Deep navy — legal
-  privacy:          '#0f2d52', // Deep navy — legal
-  'risk-disclosure':'#0f2d52', // Deep navy — statutory
-  faq:              '#0f2d52', // Deep navy — support
-  contact:          '#0f2d52', // Deep navy — contact
-  developers:       '#0f2d52', // Deep navy — technical
-  blog:             '#ffc506', // Brand gold — content
-  careers:          '#ffc506', // Brand gold — culture
+  home:             '#000000',
+  markets:          '#000000',
+  'how-it-works':   '#000000',
+  security:         '#000000',
+  about:            '#000000',
+  download:         '#000000',
+  individual:       '#000000',
+  corporate:        '#000000',
+  institutional:    '#000000',
+  terms:            '#000000',
+  privacy:          '#000000',
+  'risk-disclosure':'#000000',
+  faq:              '#000000',
+  contact:          '#000000',
+  developers:       '#000000',
+  blog:             '#000000',
+  careers:          '#000000',
 };
 
 export function App() {
@@ -155,13 +153,13 @@ export function App() {
   };
 
   const isHome = currentPage === 'home';
-  const currentThemeColor = THEME_BG[currentPage] || '#ffc506';
-  // All pages now use light/neutral backgrounds — text is always dark
+  const currentThemeColor = THEME_BG[currentPage] || '#f9f8f6';
+  // All pages use light/neutral backgrounds — text is always dark
   const isLightPage = true;
 
   return (
     <div
-      className={`relative min-h-screen font-jetbrains overflow-x-hidden flex flex-col selection:bg-black selection:text-[#ffc506] transition-colors duration-500 ${isLightPage ? 'text-black' : 'text-white'}`}
+      className={`relative min-h-screen font-jetbrains overflow-x-hidden flex flex-col selection:bg-black selection:text-white transition-colors duration-500 ${isLightPage ? 'text-black' : 'text-white'}`}
       style={{ backgroundColor: currentThemeColor }}
     >
       {/* Navbar with matching theme background */}
@@ -173,16 +171,16 @@ export function App() {
         navbarTextColor={NAVBAR_TEXT[currentPage] || '#0d0d0d'}
       />
 
-      {/* Hero Section on top of the vibrant theme background */}
+      {/* Hero Section on top of the neutral theme background */}
       <main className="relative z-10 max-w-[1536px] w-full mx-auto px-4 md:px-10 pt-28 md:pt-36 pb-12 flex items-start">
         <HeroCard page={currentPage} isExiting={isExiting} onNavigate={navigateTo} />
       </main>
 
       {/* Home feature strip */}
       {isHome && (
-        <div className="relative z-10 border-t border-black/10 w-full overflow-hidden bg-[#ffc506]">
+        <div className="relative z-10 border-t border-black/10 w-full overflow-hidden bg-zinc-900 text-white">
           <div className="max-w-[1536px] mx-auto px-4 md:px-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/15">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-zinc-800">
               {[
                 { label: 'ZERO MINIMUM BALANCE', sub: 'Start with any amount' },
                 { label: 'INSTANT MOMO DEPOSITS', sub: 'MTN MoMo & Telecel Cash' },
@@ -190,8 +188,8 @@ export function App() {
                 { label: 'DIRECT GSE ACCESS', sub: 'All 33 listed equities' },
               ].map((f, i) => (
                 <div key={i} className="py-4 px-6 flex flex-col gap-0.5">
-                  <span className="text-[10px] font-bold font-jetbrains tracking-widest uppercase text-black">{f.label}</span>
-                  <span className="text-[10px] font-jetbrains text-black/60 uppercase tracking-wide">{f.sub}</span>
+                  <span className="text-[10px] font-bold font-jetbrains tracking-widest uppercase text-white">{f.label}</span>
+                  <span className="text-[10px] font-jetbrains text-zinc-400 uppercase tracking-wide">{f.sub}</span>
                 </div>
               ))}
             </div>
@@ -199,20 +197,20 @@ export function App() {
         </div>
       )}
 
-      {/* Content body retains the sleek dark gray base (#070709) */}
+      {/* Content body */}
       {isHome ? (
         <FeaturesSection onNavigate={navigateTo} />
       ) : (
         <SubpageContent page={currentPage} onNavigate={navigateTo} />
       )}
 
-      {/* Footer matching page accent and with all routing links */}
-      <Footer accentColor={ACCENT[currentPage] || '#3b82f6'} onNavigate={navigateTo} />
+      {/* Footer matching monochrome page accent and with all routing links */}
+      <Footer accentColor={ACCENT[currentPage] || '#000000'} onNavigate={navigateTo} />
 
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        accentColor={ACCENT[currentPage] || '#ffc506'}
+        accentColor={ACCENT[currentPage] || '#ffffff'}
         onNavigate={navigateTo}
       />
     </div>

@@ -120,7 +120,7 @@ interface SearchModalProps {
 export const SearchModal: React.FC<SearchModalProps> = ({
   isOpen,
   onClose,
-  accentColor = '#ffc506',
+  accentColor = '#ffffff',
   onNavigate = () => {},
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -216,18 +216,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 onClick={() => setActiveCategory(c)}
                 className={`px-3 py-1 uppercase border transition-colors ${
                   activeCategory === c
-                    ? 'font-bold'
-                    : 'border-transparent hover:border-zinc-700'
+                    ? 'font-bold border-white text-white bg-zinc-800'
+                    : 'border-transparent text-zinc-400 hover:border-zinc-700'
                 }`}
-                style={
-                  activeCategory === c
-                    ? {
-                        borderColor: accentColor,
-                        color: accentColor,
-                        backgroundColor: `${accentColor}18`,
-                      }
-                    : {}
-                }
               >
                 {c}
               </button>
@@ -252,8 +243,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span
-                      className="text-[10px] font-mono font-bold text-zinc-500 group-hover:transition-colors"
-                      style={{ color: item.tag === activeCategory.toUpperCase() ? accentColor : undefined }}
+                      className="text-[10px] font-mono font-bold text-zinc-400 group-hover:text-white"
                     >
                       {item.tag}
                     </span>
