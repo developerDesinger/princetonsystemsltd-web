@@ -108,7 +108,7 @@ const StyledNavAction = styled.div`
     color: #ffffff;
     text-transform: uppercase;
     text-decoration: none;
-    border: none;
+    border: 1.5px solid rgba(0, 0, 0, 0.18);
     padding: 8px 18px;
     font-size: 11px;
     cursor: pointer;
@@ -297,14 +297,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const linkClass = (page: Page) =>
-    `relative py-1 cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-black after:transition-all ${
+    `relative py-1 cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-current after:transition-all ${
       currentPage === page ? 'after:w-full font-bold' : 'after:w-0 hover:after:w-full'
     }`;
 
   return (
     <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-4 md:pt-6 px-4 md:px-10 max-w-[1536px] w-full">
-      {/* Navbar Container: bg matches page background */}
-      <header className="border-none px-6 md:px-10 py-4 md:py-5 transition-all duration-500" style={{ backgroundColor: navbarBg }}>
+      {/* Navbar Container: bg matches page background, hairline bottom border for definition */}
+      <header className="border-none border-b border-black/[0.07] px-6 md:px-10 py-4 md:py-5 transition-all duration-500" style={{ backgroundColor: navbarBg }}>
         <div className="flex items-center justify-between">
           
           {/* Left: Brand Logo */}
@@ -341,8 +341,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchTrigger, onNavigate, cur
             <span onClick={() => onNavigate('download')} className={`${linkClass('download')} flex items-center gap-1.5`}>
               <HyperText text="APP" />
               <span
-                className="text-[9px] bg-black px-1.5 py-[1px] font-mono font-bold transition-colors duration-500"
-                style={{ color: navbarBg }}
+                className="text-[9px] bg-[#ffc506] text-black px-1.5 py-[1px] font-mono font-bold"
               >
                 NEW
               </span>

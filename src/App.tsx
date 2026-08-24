@@ -26,67 +26,71 @@ export type Page =
   | 'blog'
   | 'careers';
 
-// Vibrant theme color behind the hero section and on the navbar
+// Single consistent neutral for all pages — regulated fintech pattern.
+// Brand colour lives in the hero card accent text, not the page background.
+const PAGE_BG = '#f9f8f6'; // Barely-there warm white (Goldman, Morgan Stanley, Bamboo reference)
+
 const THEME_BG: Record<Page, string> = {
-  home:             '#ffc506', // Yellow
-  markets:          '#1d4ed8', // Blue
-  'how-it-works':   '#15803d', // Green
-  security:         '#7c3aed', // Purple
-  about:            '#e8e8e4', // Light gray
-  download:         '#f5e6d3', // Cream peach
-  // Non-navbar pages: white
-  individual:       '#ffffff',
-  corporate:        '#ffffff',
-  institutional:    '#ffffff',
-  terms:            '#ffffff',
-  privacy:          '#ffffff',
-  'risk-disclosure':'#ffffff',
-  faq:              '#ffffff',
-  contact:          '#ffffff',
-  developers:       '#ffffff',
-  blog:             '#ffffff',
-  careers:          '#ffffff',
+  home:             PAGE_BG,
+  markets:          PAGE_BG,
+  'how-it-works':   PAGE_BG,
+  security:         PAGE_BG,
+  about:            PAGE_BG,
+  download:         PAGE_BG,
+  individual:       PAGE_BG,
+  corporate:        PAGE_BG,
+  institutional:    PAGE_BG,
+  terms:            PAGE_BG,
+  privacy:          PAGE_BG,
+  'risk-disclosure':PAGE_BG,
+  faq:              PAGE_BG,
+  contact:          PAGE_BG,
+  developers:       PAGE_BG,
+  blog:             PAGE_BG,
+  careers:          PAGE_BG,
 };
 
 const NAVBAR_TEXT: Record<Page, string> = {
-  home:             '#000000',
-  markets:          '#000000',
-  'how-it-works':   '#000000',
-  security:         '#000000',
-  about:            '#000000',
-  download:         '#000000',
-  individual:       '#000000',
-  corporate:        '#000000',
-  institutional:    '#000000',
-  terms:            '#000000',
-  privacy:          '#000000',
-  'risk-disclosure':'#000000',
-  faq:              '#000000',
-  contact:          '#000000',
-  developers:       '#000000',
-  blog:             '#000000',
-  careers:          '#000000',
+  home:             '#0d0d0d',
+  markets:          '#0d0d0d',
+  'how-it-works':   '#0d0d0d',
+  security:         '#0d0d0d',
+  about:            '#0d0d0d',
+  download:         '#0d0d0d',
+  individual:       '#0d0d0d',
+  corporate:        '#0d0d0d',
+  institutional:    '#0d0d0d',
+  terms:            '#0d0d0d',
+  privacy:          '#0d0d0d',
+  'risk-disclosure':'#0d0d0d',
+  faq:              '#0d0d0d',
+  contact:          '#0d0d0d',
+  developers:       '#0d0d0d',
+  blog:             '#0d0d0d',
+  careers:          '#0d0d0d',
 };
 
-// Accents passed to footer and highlights
+// Two-tone professional accent system:
+//   #ffc506  — brand gold  (product, retail, CTA pages)
+//   #0f2d52  — deep navy   (institutional, legal, compliance pages)
 const ACCENT: Record<Page, string> = {
-  home:             '#ffc506',
-  markets:          '#1d4ed8',
-  'how-it-works':   '#15803d',
-  security:         '#7c3aed',
-  about:            '#18181b',
-  download:         '#c97b4b', // Warm terracotta accent
-  individual:       '#ffc506',
-  corporate:        '#22c55e',
-  institutional:    '#3b82f6',
-  terms:            '#18181b',
-  privacy:          '#18181b',
-  'risk-disclosure':'#ef4444',
-  faq:              '#1d4ed8',
-  contact:          '#18181b',
-  developers:       '#3b82f6',
-  blog:             '#1d4ed8',
-  careers:          '#22c55e',
+  home:             '#ffc506', // Brand gold — primary identity
+  markets:          '#ffc506', // Brand gold — live data pages
+  'how-it-works':   '#ffc506', // Brand gold — onboarding
+  security:         '#0f2d52', // Deep navy — trust/compliance
+  about:            '#0f2d52', // Deep navy — corporate
+  download:         '#ffc506', // Brand gold — conversion
+  individual:       '#ffc506', // Brand gold — retail
+  corporate:        '#0f2d52', // Deep navy — corporate
+  institutional:    '#0f2d52', // Deep navy — institutional
+  terms:            '#0f2d52', // Deep navy — legal
+  privacy:          '#0f2d52', // Deep navy — legal
+  'risk-disclosure':'#0f2d52', // Deep navy — statutory
+  faq:              '#0f2d52', // Deep navy — support
+  contact:          '#0f2d52', // Deep navy — contact
+  developers:       '#0f2d52', // Deep navy — technical
+  blog:             '#ffc506', // Brand gold — content
+  careers:          '#ffc506', // Brand gold — culture
 };
 
 export function App() {
@@ -152,8 +156,8 @@ export function App() {
 
   const isHome = currentPage === 'home';
   const currentThemeColor = THEME_BG[currentPage] || '#ffc506';
-  // Pages with white/light background need inverted text defaults
-  const isLightPage = currentThemeColor === '#ffffff' || currentThemeColor === '#e8e8e4' || currentThemeColor === '#f5e6d3';
+  // All pages now use light/neutral backgrounds — text is always dark
+  const isLightPage = true;
 
   return (
     <div
@@ -166,7 +170,7 @@ export function App() {
         onNavigate={navigateTo}
         currentPage={currentPage}
         navbarBg={currentThemeColor}
-        navbarTextColor={NAVBAR_TEXT[currentPage] || '#000000'}
+        navbarTextColor={NAVBAR_TEXT[currentPage] || '#0d0d0d'}
       />
 
       {/* Hero Section on top of the vibrant theme background */}
@@ -176,7 +180,7 @@ export function App() {
 
       {/* Home feature strip */}
       {isHome && (
-        <div className="relative z-10 border-t border-black/15 w-full overflow-hidden bg-[#ffc506]">
+        <div className="relative z-10 border-t border-black/10 w-full overflow-hidden bg-[#ffc506]">
           <div className="max-w-[1536px] mx-auto px-4 md:px-10">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/15">
               {[

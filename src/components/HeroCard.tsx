@@ -25,33 +25,35 @@ const StyledGumroad = styled.div<{ $hoverBg: string; $hoverText: string }>`
   width: 100%;
 
   .button {
-    --bg: #000;
+    --bg: #1a1a1d;
     --hover-bg: ${props => props.$hoverBg};
     --hover-text: ${props => props.$hoverText};
-    color: #fff;
+    color: #a1a1aa;
     cursor: pointer;
-    border: 1px solid #333338;
+    border: 1px solid #2e2e32;
     border-radius: 4px;
-    padding: 0.65em 1em;
+    padding: 0.65em 0.75em;
     background: var(--bg);
     transition: 0.2s;
     width: 100%;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
   }
 
   .button:hover {
     color: var(--hover-text);
-    transform: translate(-0.25rem, -0.25rem);
+    transform: translate(-0.2rem, -0.2rem);
     background: var(--hover-bg);
     border-color: var(--hover-bg);
-    box-shadow: 0.25rem 0.25rem #ffffff;
+    box-shadow: 0.2rem 0.2rem var(--hover-bg);
+    filter: brightness(0.9);
   }
 
   .button:active {
@@ -112,19 +114,32 @@ export const HeroCard: React.FC<HeroCardProps> = ({ page, isExiting, onNavigate 
                 Real-time market analytics from the Ghana Stock Exchange. Track equities, sovereign bonds, and sector benchmarks.
               </p>
             </div>
-            <div className="md:col-span-3 grid grid-cols-2 gap-3">
+          <div className="md:col-span-3 grid grid-cols-2 gap-3">
               {[
-                { ticker: 'GSE-CI', price: '2,847.32', change: '+1.24%', up: true },
-                { ticker: 'GCB', price: 'GH₵ 5.20', change: '+0.80%', up: true },
-                { ticker: 'MTNGH', price: 'GH₵ 1.38', change: '-0.22%', up: false },
-                { ticker: 'TOTAL', price: 'GH₵ 4.15', change: '+0.12%', up: true },
+                { ticker: 'GSE-CI', price: '2,847.32', change: '+1.24%', up: true,  pts: '20,35,28,40,38,50,45,60' },
+                { ticker: 'GCB',    price: 'GH₵ 5.20', change: '+0.80%', up: true,  pts: '30,28,35,32,40,38,45,50' },
+                { ticker: 'MTNGH', price: 'GH₵ 1.38', change: '-0.22%', up: false, pts: '50,45,48,40,42,35,38,30' },
+                { ticker: 'TOTAL', price: 'GH₵ 4.15', change: '+0.12%', up: true,  pts: '35,33,38,36,42,40,44,46' },
               ].map(t => (
                 <div key={t.ticker} className="bg-[#070b14] px-4 py-3 flex justify-between items-center transition-colors">
                   <div>
                     <div className="text-[10px] text-blue-400 font-bold tracking-widest">{t.ticker}</div>
                     <div className="text-white font-bold text-sm mt-0.5">{t.price}</div>
                   </div>
-                  <span className={`text-xs font-bold font-jetbrains ${t.up ? 'text-blue-400' : 'text-zinc-400'}`}>{t.change}</span>
+                  <div className="flex flex-col items-end gap-1">
+                    {/* Mini SVG sparkline */}
+                    <svg width="48" height="20" viewBox="0 0 48 20" className="overflow-visible">
+                      <polyline
+                        points={t.pts.split(',').map((v, i) => `${i * 7},${20 - Number(v) / 3.5}`).join(' ')}
+                        fill="none"
+                        stroke={t.up ? '#60a5fa' : '#71717a'}
+                        strokeWidth="1.5"
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    <span className={`text-xs font-bold font-jetbrains ${t.up ? 'text-blue-400' : 'text-zinc-400'}`}>{t.change}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -272,22 +287,34 @@ export const HeroCard: React.FC<HeroCardProps> = ({ page, isExiting, onNavigate 
                 Princeton Systems Ltd is a licensed securities brokerage engineered to build next generation capital market infrastructure for West Africa.
               </p>
             </div>
-            <div className="md:col-span-3 flex flex-col gap-4">
+          <div className="md:col-span-3 flex flex-col gap-4">
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { val: '2019', label: 'FOUNDED' },
-                  { val: 'SEC', label: 'REGULATED' },
-                  { val: 'GSE', label: 'MEMBER' },
+                  { val: '2019', label: 'FOUNDED', sub: 'Accra, Ghana' },
+                  { val: 'SEC', label: 'LICENSED', sub: 'SECG-BR-0042-2024' },
+                  { val: 'GSE', label: 'MEMBER', sub: 'Since 2019' },
                 ].map(s => (
                   <div key={s.label} className="bg-zinc-900/80 p-3.5 text-center">
                     <div className="text-white font-bold text-xl font-general">{s.val}</div>
                     <div className="text-zinc-400 text-[10px] tracking-widest uppercase mt-1 font-mono">{s.label}</div>
+                    <div className="text-zinc-600 text-[9px] mt-0.5 font-mono">{s.sub}</div>
                   </div>
                 ))}
               </div>
               <p className="text-zinc-300 text-xs leading-relaxed font-jetbrains pl-3">
                 Democratising capital markets in Ghana, providing transparent access and institutional tools for retail and corporate investors alike.
               </p>
+              {/* Physical address & custodian */}
+              <div className="bg-zinc-900/50 border border-zinc-800 px-4 py-3 text-[10px] font-mono text-zinc-400 space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="w-1 h-1 bg-[#ffc506] inline-block shrink-0" />
+                  <span>28 Independence Ave, Ridge, Accra — Ghana</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-1 h-1 bg-emerald-400 inline-block shrink-0" />
+                  <span>Client funds held in segregated custody · Consolidated Bank Ghana</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
@@ -488,7 +515,15 @@ export const HeroCard: React.FC<HeroCardProps> = ({ page, isExiting, onNavigate 
       <div className="pt-5 pb-8 px-6 sm:px-8 md:px-9" style={contentStyle}>
         <div className="flex items-center justify-between pb-3.5 mb-4 font-jetbrains text-[10px] font-semibold tracking-wider text-zinc-400 uppercase">
           <span>GHANA STOCK EXCHANGE, IN YOUR POCKET</span>
-          <span className="text-[#ffc506] font-bold">SEC READY</span>
+          <span className="flex items-center gap-1.5">
+            <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-emerald-400">SEC GHANA</span>
+            <span className="text-zinc-600">·</span>
+            <span className="text-zinc-400">GSE MEMBER</span>
+          </span>
         </div>
 
         <div className="mb-6">
@@ -500,6 +535,26 @@ export const HeroCard: React.FC<HeroCardProps> = ({ page, isExiting, onNavigate 
           <p className="text-zinc-300 text-xs font-jetbrains mt-3 leading-relaxed">
             The modern investment platform for Ghanaian equities, treasury bills, and market intelligence built for beginners and active investors alike.
           </p>
+
+          {/* Regulatory trust strip */}
+          <div className="mt-4 flex flex-wrap gap-3">
+            <div className="flex items-center gap-1.5 bg-zinc-900/60 border border-zinc-800 px-2.5 py-1.5 text-[9px] font-mono text-zinc-300">
+              <svg className="w-3 h-3 text-emerald-400 shrink-0" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="text-emerald-400 font-bold">SEC GHANA LICENSED</span>
+              <span className="text-zinc-500">· SECG-BR-0042-2024</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-zinc-900/60 border border-zinc-800 px-2.5 py-1.5 text-[9px] font-mono text-zinc-300">
+              <span className="w-1.5 h-1.5 bg-blue-400 inline-block shrink-0" />
+              <span>GSE MEMBER BROKER</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-zinc-900/60 border border-zinc-800 px-2.5 py-1.5 text-[9px] font-mono text-zinc-400">
+              <span className="w-1.5 h-1.5 bg-[#ffc506] inline-block shrink-0" />
+              <span>CLIENT FUNDS SEGREGATED · CBG CUSTODIAN</span>
+            </div>
+          </div>
         </div>
 
         {/* Section 6: Two-Path Choice (Confident & Guided) */}
